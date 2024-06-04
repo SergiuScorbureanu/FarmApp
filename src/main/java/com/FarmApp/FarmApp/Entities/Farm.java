@@ -1,20 +1,23 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 import java.util.Arrays;
 
 @Entity
 @Table(name = "Farms")
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Farm {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Farm extends BaseEntity {
 
     @Column(name = "address")
     private String address;
@@ -26,31 +29,5 @@ public class Farm {
     private String galery;
 
     @Column(name = "location")
-    private double[] location;
-
-    @Column(name = "deliveryLocations")
-    private double[] deliveryLocations;
-
-    public Farm(){
-    }
-
-    public Farm(String address, String phone, String galery, double[] location, double[] deliveryLocations) {
-        this.address = address;
-        this.phone = phone;
-        this.galery = galery;
-        this.location = location;
-        this.deliveryLocations = deliveryLocations;
-    }
-
-    @Override
-    public String toString() {
-        return "Farms{" +
-                "farm_id=" + id +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", galery='" + galery + '\'' +
-                ", location=" + location +
-                ", deliveryLocations=" + Arrays.toString(deliveryLocations) +
-                '}';
-    }
+    private Double location;
 }

@@ -1,20 +1,22 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "Clients")
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Client {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Client extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -30,27 +32,4 @@ public class Client {
 
     @Column(name = "location")
     private double location;
-
-    public Client(){
-    }
-
-    public Client(String name, String address, String email, String phone, double location) {
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
-        this.location = location;
-    }
-
-    @Override
-    public String toString() {
-        return "Clients{" +
-                "client_id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", location=" + location +
-                '}';
-    }
 }

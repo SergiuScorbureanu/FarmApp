@@ -1,41 +1,25 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "Categories")
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Category {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Category extends BaseEntity {
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "image")
     private String image;
-
-    public Category(){
-    }
-
-    public Category(String name, String image) {
-        this.name = name;
-        this.image = image;
-    }
-
-    @Override
-    public String toString() {
-        return "Categories{" +
-                "category_id=" + id +
-                ", name='" + name + '\'' +
-                ", image='" + image + '\'' +
-                '}';
-    }
 }

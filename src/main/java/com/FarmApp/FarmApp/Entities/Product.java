@@ -1,22 +1,26 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Date;
 
 @Entity
 @Table(name = "Products")
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Product {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Product extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -40,40 +44,8 @@ public class Product {
     private Date expirationDate;
 
     @Column(name = "ingredients")
-    private String[] ingredients;
+    private String ingredients;
 
     @Column(name = "alergens")
-    private String[] alergens;
-
-    public Product(){
-    }
-
-    public Product(String name, String image, int quantityInput, double price, String description,
-                   Date availableDate, Date expirationDate, String[] ingredients, String[] alergens) {
-        this.name = name;
-        this.image = image;
-        this.quantityInput = quantityInput;
-        this.price = price;
-        this.description = description;
-        this.availableDate = availableDate;
-        this.expirationDate = expirationDate;
-        this.ingredients = ingredients;
-        this.alergens = alergens;
-    }
-
-    @Override
-    public String toString() {
-        return "Products{" +
-                "product_id=" + id +
-                ", name='" + name + '\'' +
-                ", image='" + image + '\'' +
-                ", quantityInput=" + quantityInput +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", availableDate=" + availableDate +
-                ", expirationDate=" + expirationDate +
-                ", ingredients=" + Arrays.toString(ingredients) +
-                ", alergens=" + Arrays.toString(alergens) +
-                '}';
-    }
+    private String alergens;
 }

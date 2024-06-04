@@ -1,36 +1,23 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "DeliveryMethods")
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class DeliveryMethod {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class DeliveryMethod extends BaseEntity {
 
     @Column(name = "name")
     private String name;
-
-    public DeliveryMethod(){
-    }
-
-    public DeliveryMethod(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "DeliveryMethods{" +
-                "delivery_method_id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

@@ -1,20 +1,17 @@
 package com.FarmApp.FarmApp.Entities;
 
+import com.FarmApp.FarmApp.Entities.abstracts.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "Users")
 @Getter
 @Setter
-public class User {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class User extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -27,25 +24,4 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
-
-    public User(){
-    }
-
-    public User(String name, String address, String email, String phone) {
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "user_id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }
